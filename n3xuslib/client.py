@@ -118,7 +118,7 @@ class N3xusClient:
         sent_ids = []
         for buf_id, event in pending:
             try:
-                r = await self._http.post("/api/v1/ingest", json=event, timeout=15)
+                r = await self._http.post("", json=event, timeout=15)
                 r.raise_for_status()
                 sent_ids.append(buf_id)
             except Exception:
@@ -175,7 +175,7 @@ class N3xusClient:
             body["created_at"] = created_at
 
         try:
-            r = await self._http.post("/api/v1/ingest", json=body, timeout=15)
+            r = await self._http.post("", json=body, timeout=15)
             r.raise_for_status()
             return
         except httpx.HTTPStatusError as e:
