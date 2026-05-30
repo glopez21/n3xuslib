@@ -1,5 +1,5 @@
 import os
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 
 @dataclass
@@ -8,7 +8,7 @@ class N3xusConfig:
     db_url: str = "postgresql+asyncpg://omn1l1nk_user:changeme_omn1l1nk@localhost:5435/shared_db"
     endpoint: str = "http://localhost:8100"
     api_key: str | None = None
-    buffer_path: str = field(default_factory=lambda: os.path.expanduser("~/.n3xuslib/outbox.db"))
+    buffer_path: str = os.path.expanduser("~/.n3xuslib/outbox.db")
     buffer_flush_interval: int = 30
     source: str = "unknown"
     source_instance: str = ""
